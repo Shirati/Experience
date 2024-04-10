@@ -41,6 +41,7 @@
             this.btRev = new System.Windows.Forms.Button();
             this.txtpre = new System.Windows.Forms.TextBox();
             this.txtafter = new System.Windows.Forms.TextBox();
+            this.bthibrish = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // order
@@ -164,11 +165,22 @@
             this.txtafter.Size = new System.Drawing.Size(125, 27);
             this.txtafter.TabIndex = 13;
             // 
+            // bthibrish
+            // 
+            this.bthibrish.Location = new System.Drawing.Point(495, 253);
+            this.bthibrish.Name = "bthibrish";
+            this.bthibrish.Size = new System.Drawing.Size(120, 42);
+            this.bthibrish.TabIndex = 14;
+            this.bthibrish.Text = "חיפוש איברחיש";
+            this.bthibrish.UseVisualStyleBackColor = true;
+            this.bthibrish.Click += new System.EventHandler(this.bthibrish_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.bthibrish);
             this.Controls.Add(this.txtafter);
             this.Controls.Add(this.txtpre);
             this.Controls.Add(this.btRev);
@@ -204,5 +216,6 @@
         private Button btRev;
         private TextBox txtpre;
         private TextBox txtafter;
+        private Button bthibrish;
     }
 }

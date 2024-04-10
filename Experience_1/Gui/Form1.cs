@@ -78,14 +78,15 @@ namespace Gui
         private void btnSearch_Click(object sender, EventArgs e)
         {
             lstCities.DataSource = CitiesBLL.GetCitiesByPartialName(txtAdd.Text);
-            txtAdd.Clear();
+           // txtAdd.Clear();
         }
 
         private void btnDel_Click(object sender, EventArgs e)
         {
+            MessageBox.Show("בטוח שרצונך למחוק");
             CitiesBLL.Delete(txtAdd.Text);
             lstCities.DataSource = CitiesBLL.GetAll();
-            txtAdd.Clear();
+           // txtAdd.Clear();
         }
 
         private void btRev_Click(object sender, EventArgs e)
@@ -96,7 +97,11 @@ namespace Gui
                 index = 0;
         }
 
-       
+        private void bthibrish_Click(object sender, EventArgs e)
+        {
+            lstCities.DataSource = CitiesBLL.SelectByName_hibrish(txtAdd.Text);
+
+        }
 
         private void button1_Click(object sender, EventArgs e)
         {

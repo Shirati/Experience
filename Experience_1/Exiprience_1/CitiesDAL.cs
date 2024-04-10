@@ -1,5 +1,6 @@
 ﻿
 using Microsoft.EntityFrameworkCore.ChangeTracking;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -91,15 +92,42 @@ namespace Exiprience_1
             }
 
         }
-        //public List<City> SelectByName_hibrish(string partialName)
-        //{
-        //    using (CitiesContext db = new CitiesContext())
-        //    {
-        //        string sqlQuery = "WHERE [city_name] COLLATE Hebrew_CI_AS LIKE '%'+ @cityName+'%'";
-        //        return db.Database.SqlQuery<City>(sqlQuery).ToList();
-        //    }
+        public List<City> SelectByName_hibrish(string partialName)
+        {
+          
+                Dictionary<char, char> keyboardToHebrewMapping = new Dictionary<char, char>
+        {
+            {'t', 'א'},{'c', 'ב'},   {'d', 'ג'}  ,{'s', 'ד'},
+            {'v', 'ה'},  {'u', 'ו'},{'z', 'ז'}, {'j', 'ח'},
+             {'y', 'ט'},  {'h', 'י'},{'f', 'כ'}, {'k', 'ל'},
+              {'n', 'מ'},  {'b', 'נ'},{'x', 'ס'}, {'g', 'ע'},
+               {'p', 'פ'},  {'m', 'צ'},{'e', 'ק'}, {'r', 'ר'},
+                {'a', 'ש'},  {',', 'ת'}
 
-        //}
+
+
+        };
+
+                char[] charArray = partialName.ToCharArray();
+                for (int i = 0; i < charArray.Length; i++)
+                {
+                    if (keyboardToHebrewMapping.ContainsKey(charArray[i]))
+                    {
+                        charArray[i] = keyboardToHebrewMapping[charArray[i]];
+                    }
+                }
+
+            string str=  new string(charArray);
+
+            using (CitiesContext db = new CitiesContext())
+            {
+                return db.Cities.Where(city => city.CityName.Contains(str)).ToList();
+
+            }
+
+        }
+
+
     }
 
 }

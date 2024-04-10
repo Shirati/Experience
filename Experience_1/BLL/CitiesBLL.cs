@@ -60,5 +60,10 @@ namespace BLL
 
             return citiesDAL.GetCitiesByPartialName(partialName).ToList();
         }
+        public List<City> SelectByName_hibrish(string partialName)
+        {
+            return citiesDAL.SelectByName_hibrish(partialName).ToList();
+
+        }
     }
 }
